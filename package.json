@@ -2,7 +2,6 @@
   "name": "y",
   "version": "1.0.0",
   "description": "This is Namaste React by Akshay Saini",
-  "main": "App.js",
   "scripts": {
     "test": "jest"
   },
@@ -20,5 +19,15 @@
   "bugs": {
     "url": "https://github.com/DalaiAnita/Namaste-React/issues"
   },
-  "homepage": "https://github.com/DalaiAnita/Namaste-React#readme"
+  "homepage": "https://github.com/DalaiAnita/Namaste-React#readme",
+  "devDependencies": {
+    "parcel": "^2.16.4"
+  },
+  "dependencies": {
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
 }
