@@ -1,3 +1,44 @@
-#heading {
+.firstHeader {
     color: red;
+}
+
+.secondHeader{
+    color: blue;
+}
+
+.thirdHeader{
+    color: chartreuse;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border:1px solid #ddd;
+    padding:10px 20px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.1);
+}
+
+
+.logo {
+    width : 80px
+}
+
+.search-container {
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.search-container input {
+  width: 500px;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.user-container {
+  display:flex;
+  align-items:center;
+  gap:8px;
+  width: 100px;
+  height: 100px;
 }
