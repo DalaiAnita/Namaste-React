@@ -171,6 +171,34 @@ const Body = () => {
             price="450"
             rating="4.1"
             />
+            <RestaurantCard 
+            resName="Burger King" 
+            cuisine="Burgers, Fast Food, Beverages" 
+            time="25"
+            price="300"
+            rating="4.3"
+            />
+        <RestaurantCard 
+            resName="KFC" 
+            cuisine="Burgers, Fast Food, Beverages" 
+            time="35"
+            price="500"
+            rating="4.5"
+            />
+        <RestaurantCard 
+            resName="WOW Momos" 
+            cuisine="Fried Momos, Tandoori Momos " 
+            time="20"
+            price="350"
+            rating="4.4"
+            />
+        <RestaurantCard 
+            resName="Paradise" 
+            cuisine="Dum Biryani, Veg Biryani " 
+            time="30"
+            price="450"
+            rating="4.1"
+            />
       </div>
     </div>
   );
