@@ -40,3 +40,19 @@
 - Https
 - Tree shaking - it will remove unused code
 - Different dev and Prod bundles
+
+
+
+ - There are 2 types of export/import
+
+
+ - Default export/import
+
+ - export default component
+ - import component from "component-path"
+
+
+- Named export/import
+
+- export const componentName
+- import {componentName} from "component-path".
