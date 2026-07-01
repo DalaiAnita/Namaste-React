@@ -41,7 +41,7 @@
 - Tree shaking - it will remove unused code
 - Different dev and Prod bundles
 
-
+ ---------------------
 
  - There are 2 types of export/import
 
@@ -56,3 +56,10 @@
 
 - export const componentName
 - import {componentName} from "component-path".
+
+
+ # React Hooks 
+ (Noraml JS utility functions)
+
+ - 1) useState() - it generates superpowerful react state variables
+ - 2) useEffect() 
