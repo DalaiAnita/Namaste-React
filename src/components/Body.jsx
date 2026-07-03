@@ -1,42 +1,66 @@
 import RestaurantCard from "./RestaurantCard";
 import restaurantsListMockData from "../Utils/mockData";
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
 
 const Body = () => {
+  const [allRestaurants, setAllRestaurants] = useState([]);
+  const [filteredRestaurants, setFilteredRestaurants] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
-    const [restaurantsList, setRestaurantsList] = useState(restaurantsListMockData);
+  useEffect(() => {
+    fetchData();
+  }, []);
 
-    useEffect(()=>{
-        fetchData();
-    },[])
+  const fetchData = async () => {
+    const responseData = await fetch("https://dummyjson.com/recipes");
+    const data = await responseData.json();
+    setAllRestaurants(data.recipes);
+    setFilteredRestaurants(data.recipes);
+  };
 
-    const fetchData = async () => {
-        const responseData = await fetch(
-            "https://dummyjson.com/recipes"
-        );
-        const data = await responseData.json();
-        // console.log('data---->',data.recipes.map((recipe)=>recipe.rating > 3));
-        setRestaurantsList(data.recipes);
-    }
+  const TopRestaurants = () => {
+    const filteredTopRestaurants = allRestaurants.filter(
+      (restaurant) => restaurant.rating > 4.8,
+    );
+    setFilteredRestaurants(filteredTopRestaurants);
+  };
 
-    const filterTopRestaurants = () => {
+  const resetData = () => { 
+     setFilteredRestaurants(allRestaurants);
+     setSearchText("");
+  }
 
-        const filteredRestaurants = restaurantsList.filter(
-            (restaurant)=> restaurant.rating > 4.5
-        );
-
-        setRestaurantsList(filteredRestaurants);
-    }
-
-  return (
+  return allRestaurants.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       <div className="search-container">
-        <input type="text" placeholder="Filter Restaurants.." />
-        <button onClick={filterTopRestaurants}>Top Rated Restaurants</button>
-        <button onClick={()=>setRestaurantsList(restaurantsListMockData)}>Reset</button>
+        <input
+          type="text"
+          value={searchText}
+          onChange={(event) => {
+            setSearchText(event.target.value);
+            const filteredRestaurant = allRestaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchText.toLowerCase()));
+              setFilteredRestaurants(filteredRestaurant);
+          }}
+          placeholder="Filter Restaurants.."
+        />
+        <button
+          onClick={() => {
+            const filteredRestaurant = allRestaurants.filter((restaurant) => restaurant.name.toLowerCase().includes(searchText.toLowerCase()));
+              setFilteredRestaurants(filteredRestaurant);
+          }}
+        >
+          Search
+        </button>
+        <button onClick={TopRestaurants}>Top Rated Restaurants</button>
+        <button onClick={resetData}>
+          Reset
+        </button>
       </div>
       <div className="res-container">
-        {restaurantsList.map((recipe) => (
+        {filteredRestaurants.map((recipe) => (
           <RestaurantCard key={recipe.id} resData={recipe} />
         ))}
       </div>
