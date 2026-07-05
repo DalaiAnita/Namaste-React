@@ -1,7 +1,6 @@
 
 const RestaurantCard = ({restData}) => {
   const {name, cuisine, caloriesPerServing, rating, prepTimeMinutes, image} = restData;
-  console.log('RestCard data--->', restData);
   return (
     <div className="card">
       <img
