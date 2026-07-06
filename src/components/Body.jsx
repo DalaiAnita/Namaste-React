@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import RestaurantCard from "./RestaurantCard";
-
+import Shimmer from "./Shimmer";
 const Body = () => {
   const [allRestaurants, setALlRestaurants] = useState([]);
   const [filteredRestaurants, setFilterredRestaurants] = useState([]);
@@ -8,7 +8,7 @@ const Body = () => {
 
   useEffect(() => {
     fetchData();
-  }, [searchText]);
+  }, []);
 
   //Fetch API data here
   const fetchData = async () => {
@@ -27,15 +27,17 @@ const Body = () => {
     setFilterredRestaurants(filteredData);
   };
 
-  return (
+  return allRestaurants.length === 0 ? <Shimmer /> : 
+   (
     <div className="body">
       <div className="search-container">
         <input
           type="text"
           value={searchText}
           onChange={(event) => {
-            setSearchText(event.target.value);
-
+            const text = event.target.value;
+            setSearchText(text);
+            searchRestaurants(text);
           }}
           placeholder="Search Recipes..."
         />
@@ -70,6 +72,7 @@ const Body = () => {
       </div>
     </div>
   );
+
 };
 
 export default Body;
