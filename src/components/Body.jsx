@@ -12,17 +12,18 @@ const Body = () => {
 
   //Fetch API data here
   const fetchData = async () => {
-    const responseData = await fetch("https://dummyjson.com/recipes");
+    const responseData = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9753&lng=77.591&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
     const data = await responseData.json();
-    setALlRestaurants(data.recipes);
-    setFilterredRestaurants(data.recipes);
+    const finalData =  data.data?.cards[1].card?.card?.gridElements?.infoWithStyle?.restaurants;
+    setALlRestaurants(finalData);
+    setFilterredRestaurants(finalData);
   };
 
   // Restaurants search functionality
 
   const searchRestaurants = () => {
     const filteredData = allRestaurants.filter((restaurant) => {
-      return restaurant.name.toLowerCase().includes(searchText.toLowerCase());
+      return restaurant?.info?.name.toLowerCase().includes(searchText.toLowerCase());
     });
     setFilterredRestaurants(filteredData);
   };
@@ -47,7 +48,7 @@ const Body = () => {
         <button
           onClick={() => {
             const filteredRestaurantListData = allRestaurants.filter(
-              (restaurant) => restaurant.rating > 4.7,
+              (restaurant) => restaurant?.info?.avgRating > 4.2,
             );
             setFilterredRestaurants(filteredRestaurantListData);
           }}
@@ -67,7 +68,7 @@ const Body = () => {
 
       <div className="res-container">
         {filteredRestaurants.map((rest) => (
-          <RestaurantCard key={rest.id} restData={rest} />
+          <RestaurantCard key={rest.info.id} restData={rest} />
         ))}
       </div>
     </div>
