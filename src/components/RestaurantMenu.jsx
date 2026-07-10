@@ -14,8 +14,6 @@ const RestaurantMenu = () => {
       <div className="card-info">
         <span className="rating">⭐ 4.2(20K+ ratings) . ₹350 for two</span>
         <span className="delivery-time">⏱️ 8</span>
-         <span className="rating">⭐ 4.2(20K+ ratings) . ₹350 for two</span>
-        <span className="delivery-time">⏱️ 8</span>
       </div>
     </div>
   );
