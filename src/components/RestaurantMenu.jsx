@@ -1,6 +1,23 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const RestaurantMenu = () => {
+
+  const {id} = useParams();
+  console.log('param', id);
+
+  useEffect(()=>{
+    fetchMenu();
+  },[]);
+
+  //just added the logic, but here the swiggy restaurant menu api fails due to some restrictions from Swiggy
+
+  const fetchMenu = async () =>{
+    const menuData = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9341967&lng=77.7241821&restaurantId=" + id)
+    const jsonData = await menuData.json();
+    console.log('hello-->', jsonData);
+
+}
 
 
   return (
