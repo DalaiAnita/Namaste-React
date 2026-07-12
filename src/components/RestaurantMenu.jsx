@@ -13,9 +13,9 @@ const RestaurantMenu = () => {
   //just added the logic, but here the swiggy restaurant menu api fails due to some restrictions from Swiggy
 
   const fetchMenu = async () =>{
-    const menuData = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9341967&lng=77.7241821&restaurantId=" + id)
-    const jsonData = await menuData.json();
-    console.log('hello-->', jsonData);
+    // const menuData = await fetch("https://corsproxy.io/?https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=12.9341967&lng=77.7241821&restaurantId=" + id)
+    // const jsonData = await menuData.json();
+    // console.log('hello-->', jsonData);
 
 }
 
