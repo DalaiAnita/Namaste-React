@@ -4,37 +4,36 @@ class UserClass extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      count: 0,
+      userInfo:{
+        login:"anitadalai"      }
     };
+
 
     console.log(this.props.name + " Constructor is called");
   }
 
   async componentDidMount() {
-    const data = await fetch("https://api.github.com/users/octocat/followers");
+    const data = await fetch("https://api.github.com/users/octocat");
     const responseData = await data.json();
-    console.log("response", responseData);
-    console.log(this.props.name + "Component Did mount");
+    this.setState({
+        userInfo: responseData
+    });
+
+    console.log("user ->", responseData)
+
   }
 
+
+
   render() {
-    console.log(this.props.name + "Render is called");
-    const { name, age, location } = this.props;
-    const { count } = this.state;
+    const { login, id, location } = this.state.userInfo;
+    console.log(login)
     return (
       <div>
         <h2>User from Class component</h2>
-        <h5>Name: {name}</h5>
-        <h5>Age: {age}</h5>
-        <h5>Location: {location}</h5>
-        <h5>Count: {count}</h5>
-        <button
-          onClick={() => {
-            this.setState({ count: count + 1 });
-          }}
-        >
-          Increse Count
-        </button>
+        <h5>Name: {login}</h5>
+        <h5>Age: {id}</h5>
+        <h5>Location:{location} </h5>
       </div>
     );
   }
