@@ -1,14 +1,3 @@
-/* .firstHeader {
-    color: red;
-}
-
-.secondHeader{
-    color: blue;
-}
-
-.thirdHeader{
-    color: chartreuse;
-} */
 
 .header {
   display: flex;
@@ -37,6 +26,11 @@
   font-size: 24px;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
 }
 
 .search-container {
@@ -124,6 +118,18 @@
   width: 100%;
   height: 180px;
   object-fit: cover;
+}
+
+.menu-container {
+    max-width: 850px;
+    margin: 40px auto;
+}
+
+.menu-card-img {
+    width:100%;
+    height:320px;
+    object-fit:cover;
+    border-radius:16px;
 }
 
 .card-body {
