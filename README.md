@@ -63,3 +63,5 @@
 
  - 1) useState() - it generates superpowerful react state variables
  - 2) useEffect() 
+
+ - useState is used to manage local state in functional components. We need it because React doesn't track changes to normal JavaScript variables. When we update state using the setter function, React is notified, schedules a re-render, performs reconciliation by comparing the old and new Virtual DOM, and updates only the affected parts of the Real DOM. This keeps the UI synchronized with the application's data while ensuring efficient rendering."
