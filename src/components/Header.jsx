@@ -30,7 +30,9 @@ const onlineStatus = useOnlineStatus();
           <li>
             <Link to="/contact">Contact Us</Link>
           </li>
-          <li>Cart</li>
+          <li>
+            <Link to="/grocery">Grocery</Link>
+          </li>
           <button className="login-btn" onClick={() => {
             (btnName === "Login") ? setBtnName("Logout") : setBtnName("Login")
           } }>{btnName}</button>
