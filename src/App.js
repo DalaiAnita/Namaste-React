@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import Header from "./components/Header.jsx";
 import Body from "./components/Body.jsx";
 import About from "./components/About.jsx";
-import Contact from "./components/Contact.jsx";
+// import Contact from "./components/Contact.jsx";
 import Error from "./components/Error.jsx";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
+import Shimmer from "./components/Shimmer.jsx";
 
-const Grocery = lazy(() => import("./components/Grocery.jsx"))
+const Grocery = lazy(() => import("./components/Grocery.jsx"));
+const Contact = lazy(() => import("./components/Contact.jsx"))
 
 const AppLayout = () => {
   return (
@@ -34,7 +36,7 @@ const appRouter = createBrowserRouter([
       },
       {
         path:'/contact',
-        element: <Contact />
+        element: <Suspense fallback={<Shimmer />}><Contact /></Suspense>
       },
       {
         path:'/grocery',
