@@ -5,7 +5,6 @@ import Shimmer from "./Shimmer";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
-  console.log("param", id);
 
   const menuData = useRestaurantMenu(id);
 
@@ -14,7 +13,7 @@ const RestaurantMenu = () => {
   ) : (
     <div className="menu-container">
       <h2>{menuData.name}({menuData.cuisine})</h2>
-      <img className="menu-card-img" src={menuData.image} alt={menuData.ane} />
+      <img className="w-56" src={menuData.image} alt={menuData.name} />
       <div className="card-info">
         <span className="rating">⭐ {menuData.rating}</span>
         <span className="delivery-time">⏱️ {menuData.prepTimeMinutes} Mins</span>

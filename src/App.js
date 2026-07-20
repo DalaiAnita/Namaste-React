@@ -8,6 +8,7 @@ import Error from "./components/Error.jsx";
 import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import Shimmer from "./components/Shimmer.jsx";
+import "../index.css";
 
 const Grocery = lazy(() => import("./components/Grocery.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"))
