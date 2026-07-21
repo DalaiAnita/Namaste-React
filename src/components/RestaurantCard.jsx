@@ -3,25 +3,36 @@ const RestaurantCard = ({restData}) => {
   console.log('Res Crs Comp', restData);
   const {name, cuisine, caloriesPerServing, rating, prepTimeMinutes, image} = restData;
   return (
-    <div className="card px-4 py-2">
-      <img
-        className="w-56 rounded-lg"
-        src={image}
-        alt="Recipe"
-      />
+<div className="card p-4">
+  <div className="bg-slate-300 rounded-xl w-64 overflow-hidden shadow-md">
 
-      <div className="card-body bg-slate-200 h-30">
-        <h3 className="w-56 text-lg font-bold px-2 overflow-hidden">{name}</h3>
+    <img
+      className="w-full h-44 object-cover"
+      src={image}
+      alt={name}
+    />
 
-        <div className="card-info flex">
-          <span className="rating px-2">⭐ {rating}</span>
-          <span className="delivery-time">⏱️ {prepTimeMinutes}</span>
-        </div>
+    <div className="p-4">
+      <h3 className="text-lg font-bold truncate">
+        {name}
+      </h3>
 
-        <p className="cuisines px-2">{cuisine}</p>
-        <p className="price px-2">{caloriesPerServing}</p>
+      <div className="flex items-center gap-4 mt-2">
+        <span>⭐ {rating}</span>
+        <span>⏱️ {prepTimeMinutes} mins</span>
       </div>
+
+      <p className="text-sm text-gray-700 mt-2">
+        {cuisine}
+      </p>
+
+      <p className="font-semibold mt-1">
+        {caloriesPerServing} cal
+      </p>
     </div>
+
+  </div>
+</div>
   );
 };
 
