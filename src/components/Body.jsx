@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, {withPromotedLabel} from "./RestaurantCard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import { Link } from "react-router-dom";
@@ -22,6 +22,11 @@ const Body = () => {
     setALlRestaurants(finalData);
     setFilterredRestaurants(finalData);
   };
+
+
+  //Higher Order Component
+
+  const TopRatedRestaurantCard = withPromotedLabel(RestaurantCard);
 
   // Restaurants search functionality
 
@@ -84,6 +89,7 @@ const Body = () => {
 
         <div className="flex flex-wrap p-4 m-4">
           {filteredRestaurants.map((rest) => (
+            rest.rating > 4.5 ? <Link to={`/restaurant/${rest.id}`}  key={rest.id} ><TopRatedRestaurantCard restData={rest} /></Link> : 
             <Link to={`/restaurant/${rest.id}`} key={rest.id}>
               <RestaurantCard restData={rest} />
             </Link>
