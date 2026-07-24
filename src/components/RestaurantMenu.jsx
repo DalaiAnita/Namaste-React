@@ -6,40 +6,45 @@ import Accordion from "./Accordion";
 
 const RestaurantMenu = () => {
   const { id } = useParams();
-  const [showInstructions, setShowInstructions] = useState(false);
-  const [showIngredients, setShowIngredients] = useState(false);
+
+  const [openAccordion, setOpenAccordion] = useState(null);
 
   const menuData = useRestaurantMenu(id);
-  console.log(menuData);
-  const handleInstructionsClick = () => {
-    setShowInstructions(!showInstructions);
+
+  const handleAccordionClick = (section) => {
+    setOpenAccordion((prev) => (prev === section ? null : section));
   };
 
-  const handleIngredientsClick = () => {
-    setShowIngredients(!showIngredients);
-  };
   return menuData === null ? (
     <Shimmer />
   ) : (
     <div className=" bg-white shadow-lg">
       <Accordion
         title="Instructions"
-        isOpen={showInstructions}
-        onClick={handleInstructionsClick}
+        isOpen={openAccordion === "Instructions"}
+        onClick={() => handleAccordionClick("Instructions")}
       >
         {menuData.instructions.map((step, index) => (
-          <p key={index}>
+          <p className="p-2" key={index}>
             {index + 1}.{step}
           </p>
         ))}
       </Accordion>
       <Accordion
         title="Ingredients"
-        isOpen={showIngredients}
-        onClick={handleIngredientsClick}
+        isOpen={openAccordion === "Ingredients"}
+        onClick={() => handleAccordionClick("Ingredients")}
       >
         {menuData.ingredients.map((step, index) => (
-          <p key={index}>
+          <p className="p-2" key={index}>
+            {index + 1}.{step}
+          </p>
+        ))}
+      </Accordion>
+
+      <Accordion title="Tags" isOpen={openAccordion === "Tags"} onClick={() => handleAccordionClick("Tags")}>
+        {menuData.tags.map((step, index) => (
+          <p className="p-2" key={index}>
             {index + 1}.{step}
           </p>
         ))}
