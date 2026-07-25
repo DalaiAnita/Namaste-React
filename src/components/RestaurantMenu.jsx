@@ -44,7 +44,7 @@ const RestaurantMenu = () => {
 
       <Accordion title="Tags" isOpen={openAccordion === "Tags"} onClick={() => handleAccordionClick("Tags")}>
         {menuData.tags.map((step, index) => (
-          <p className="p-2" key={index}>
+          <p className="p-2 m-2" key={index}>
             {index + 1}.{step}
           </p>
         ))}
