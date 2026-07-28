@@ -33,6 +33,8 @@ if (menuData === null) {
     },
   ];
 
+//Logic for same index double click
+
   const handleAccordionClick = (section) => {
     setOpenAccordion((prev) => (prev === section ? null : section));
   };
