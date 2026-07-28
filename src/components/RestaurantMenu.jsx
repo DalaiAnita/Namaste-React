@@ -44,7 +44,7 @@ if (menuData === null) {
       <Accordion
         title="Instructions"
         isOpen={showItem === 0}
-        setShowIndex={() => setShowItem(0)}
+        setShowIndex={() => setShowItem((prev) => (prev === 0 ? null : 0))}
       >
         {menuData.instructions.map((step, index) => (
           <p className="p-2" key={index}>
@@ -55,7 +55,7 @@ if (menuData === null) {
       <Accordion
         title="Ingredients"
         isOpen={showItem === 1}
-        setShowIndex={() => setShowItem(1)}
+        setShowIndex={() => setShowItem((prev) => (prev === 1 ? null : 1))}
       >
         {menuData.ingredients.map((step, index) => (
           <p className="p-2" key={index}>
@@ -66,7 +66,7 @@ if (menuData === null) {
 
       <Accordion title="Tags" 
         isOpen={showItem === 2}
-        setShowIndex={() => setShowItem(2)}
+        setShowIndex={() => setShowItem((prev) => (prev === 2 ? null : 2))}
       >
         {menuData.tags.map((step, index) => (
           <p className="p-2 m-2" key={index}>
