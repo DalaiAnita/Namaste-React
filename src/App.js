@@ -1,4 +1,4 @@
-import React, {lazy, Suspense} from "react";
+import React, {createContext, lazy, Suspense} from "react";
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header.jsx";
 import Body from "./components/Body.jsx";
@@ -9,11 +9,16 @@ import { createBrowserRouter, RouterProvider, Outlet } from "react-router-dom";
 import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import Shimmer from "./components/Shimmer.jsx";
 import "../index.css";
+import UserContext from "./Utils/UserContext.js";
+
 
 const Grocery = lazy(() => import("./components/Grocery.jsx"));
 const Contact = lazy(() => import("./components/Contact.jsx"))
 
 const AppLayout = () => {
+
+  const {loggedInUser} = createContext(UserContext)
+
   return (
     <div className="app">
       <Header />
