@@ -1,6 +1,10 @@
+import { useContext } from "react";
+import UserContext from "../Utils/UserContext";
+
 const RestaurantCard = ({ restData }) => {
-  const { name, cuisine, caloriesPerServing, rating, prepTimeMinutes, image } =
-    restData;
+  const { name, cuisine, caloriesPerServing, rating, prepTimeMinutes, image } = restData;
+
+const {loggedInUser} = useContext(UserContext);
 
   return (
     <div className="card p-4">
@@ -18,6 +22,7 @@ const RestaurantCard = ({ restData }) => {
           <p className="text-sm text-gray-700 mt-2">{cuisine}</p>
 
           <p className="font-semibold mt-1">{caloriesPerServing} cal</p>
+          <p className="font-semibold mt-1">User: {loggedInUser}</p>
         </div>
       </div>
     </div>
