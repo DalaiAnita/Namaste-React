@@ -29,6 +29,7 @@ const AppLayout = () => {
 
 
   return (
+    //solution to Props drilling via React Context
     <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
       <div className="app">
       <Header />
