@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useRestaurantMenu from "../Utils/hooks/useRestaurantMenu";
 import Shimmer from "./Shimmer";
 import Accordion from "./Accordion";
+import MenuItem from "./MenuItem";
 
 const RestaurantMenu = () => {
 
@@ -41,38 +42,22 @@ if (menuData === null) {
 
   return (
     <div className=" bg-white shadow-lg">
-      <Accordion
-        title="Instructions"
-        isOpen={showItem === 0}
-        setShowIndex={() => setShowItem((prev) => (prev === 0 ? null : 0))}
-      >
-        {menuData.instructions.map((step, index) => (
-          <p className="p-2" key={index}>
-            {index + 1}.{step}
-          </p>
-        ))}
-      </Accordion>
+      
       <Accordion
         title="Ingredients"
         isOpen={showItem === 1}
         setShowIndex={() => setShowItem((prev) => (prev === 1 ? null : 1))}
       >
-        {menuData.ingredients.map((step, index) => (
-          <p className="p-2" key={index}>
-            {index + 1}.{step}
-          </p>
-        ))}
-      </Accordion>
-
-      <Accordion title="Tags" 
-        isOpen={showItem === 2}
-        setShowIndex={() => setShowItem((prev) => (prev === 2 ? null : 2))}
-      >
-        {menuData.tags.map((step, index) => (
-          <p className="p-2 m-2" key={index}>
-            {index + 1}.{step}
-          </p>
-        ))}
+        {menuData.ingredients.map((ingredient, index) => {
+          const item = {
+            id: index + 1,
+            name: ingredient,
+            image: menuData.image,
+            price: 49 + index * 2,
+            description: `Fresh ${ingredient}`
+          };
+          return <MenuItem key={item.id} item = {item} />
+        })}
       </Accordion>
 
       
