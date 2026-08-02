@@ -1,3 +1,5 @@
+// Component for creating Swiggy like menu Items list to add items in the cart
+
 const MenuItem = ({ item }) => {
 
     const {
