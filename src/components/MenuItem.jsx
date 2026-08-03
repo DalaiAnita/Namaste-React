@@ -9,6 +9,8 @@ const MenuItem = ({ item }) => {
         description
     } = item;
 
+    //Logic here
+
     return (
         <div className="flex justify-between border-b p-4">
 
