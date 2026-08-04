@@ -10,6 +10,8 @@ import RestaurantMenu from "./components/RestaurantMenu.jsx";
 import Shimmer from "./components/Shimmer.jsx";
 import "../index.css";
 import UserContext from "./Utils/UserContext.js";
+import { Provider } from "react-redux";
+import appStore from "./Utils/appStore.js";
 
 
 const Grocery = lazy(() => import("./components/Grocery.jsx"));
@@ -30,12 +32,14 @@ const AppLayout = () => {
 
   return (
     //solution to Props drilling via React Context
-    <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
+    <Provider store={appStore}>
+      <UserContext.Provider value={{loggedInUser: userName, setUserName}}>
       <div className="app">
       <Header />
       <Outlet />
     </div>
     </UserContext.Provider>
+    </Provider>
   );
 };
 
